@@ -1,5 +1,12 @@
 package chapter1;
 
+/**
+ * compress string "aaabbc" -> "a3b2c1". if compressed string is not smaller
+ * than the original one, return the original string
+ * 
+ * @author boyxgc
+ * 
+ */
 public class Q5 {
 	/*
 	 * using StringBuffer to achieve O(n) time complexity
@@ -36,6 +43,7 @@ public class Q5 {
 	public static void main(String[] args) {
 		print(compress("hello"));
 		print(compress("heeeeellllllllo"));
+		print(compress("heeeeellllllllooo"));
 	}
 
 	private static void print(String str) {
