@@ -9,7 +9,7 @@ public class Q2 {
 		int nullIndex = inputStr.indexOf("\0");
 		nullIndex = (nullIndex == -1) ? inputStr.length() : nullIndex;
 		
-		/*get null-terminated string*/
+		/*get null-terminated string (http://en.wikipedia.org/wiki/Null-terminated_string)*/
 		String stringBeforeNull = inputStr.substring(0, nullIndex);
 		
 		StringBuffer reverseString = new StringBuffer();
