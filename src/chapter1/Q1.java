@@ -19,4 +19,9 @@ public class Q1 {
 
 		return true;
 	}
+	
+	public static void main(String [] args) {
+		System.out.println(hasUniqueCharacters("hello"));
+		System.out.println(hasUniqueCharacters("helo"));
+	}
 }
