@@ -1,5 +1,11 @@
 package chapter1;
 
+/**
+ * implement a reverse function which reverses a null-terminated string
+ * 
+ * @author boyxgc
+ * 
+ */
 public class Q2 {
 
 	/*
@@ -8,16 +14,19 @@ public class Q2 {
 	public static String reverse(String inputStr) {
 		int nullIndex = inputStr.indexOf("\0");
 		nullIndex = (nullIndex == -1) ? inputStr.length() : nullIndex;
-		
-		/*get null-terminated string (http://en.wikipedia.org/wiki/Null-terminated_string)*/
+
+		/*
+		 * get null-terminated string
+		 * (http://en.wikipedia.org/wiki/Null-terminated_string)
+		 */
 		String stringBeforeNull = inputStr.substring(0, nullIndex);
-		
+
 		StringBuffer reverseString = new StringBuffer();
-		
+
 		for (int i = stringBeforeNull.length() - 1; i >= 0; i--) {
 			reverseString.append(inputStr.charAt(i));
 		}
-		
+
 		return reverseString.toString();
 	}
 

@@ -2,6 +2,13 @@ package chapter1;
 
 import java.util.Arrays;
 
+/**
+ * Given two strings, write a method to decide if one is a permutation of the
+ * other
+ * 
+ * @author boyxgc
+ * 
+ */
 public class Q3 {
 
 	/*

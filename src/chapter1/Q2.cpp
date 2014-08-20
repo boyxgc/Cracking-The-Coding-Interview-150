@@ -10,7 +10,9 @@
 #include <iostream>
 using namespace std;
 
-
+/*
+ *implement a reverse function which reverses a null-terminated string
+ */
 char* reverse(char * str) {
     if(!str) return NULL;
 

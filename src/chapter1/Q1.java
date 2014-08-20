@@ -1,5 +1,11 @@
 package chapter1;
 
+/**
+ * check if a string contains only unique characters
+ * 
+ * @author boyxgc
+ * 
+ */
 public class Q1 {
 	/*
 	 * Assuming the input string could contain any ASCII character
@@ -19,8 +25,8 @@ public class Q1 {
 
 		return true;
 	}
-	
-	public static void main(String [] args) {
+
+	public static void main(String[] args) {
 		System.out.println(hasUniqueCharacters("hello"));
 		System.out.println(hasUniqueCharacters("helo"));
 	}
