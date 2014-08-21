@@ -1,5 +1,7 @@
 package chapter2;
 
+import java.util.Arrays;
+
 import util.Utils;
 import dataStructure.LinkedListNode;
 
@@ -55,17 +57,8 @@ public class Q4 {
 	}
 
 	public static void main(String[] args) {
-		LinkedListNode<Integer> head = new LinkedListNode<Integer>(2);
-		LinkedListNode<Integer> node1 = new LinkedListNode<Integer>(5);
-		LinkedListNode<Integer> node2 = new LinkedListNode<Integer>(4);
-		LinkedListNode<Integer> node3 = new LinkedListNode<Integer>(1);
-		LinkedListNode<Integer> node4 = new LinkedListNode<Integer>(-1);
-		LinkedListNode<Integer> node5 = new LinkedListNode<Integer>(8);
-		head.next = node1;
-		node1.next = node2;
-		node2.next = node3;
-		node3.next = node4;
-		node4.next = node5;
+		LinkedListNode<Integer> head = Utils.createLinkedList(Arrays.asList(2,
+				5, 4, 1, -1, 8));
 
 		Utils.printLinkedList(head);
 

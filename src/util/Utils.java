@@ -1,5 +1,7 @@
 package util;
 
+import java.util.List;
+
 import dataStructure.LinkedListNode;
 
 public class Utils {
@@ -18,5 +20,19 @@ public class Utils {
 			head = head.next;
 		}
 		System.out.println();
+	}
+
+	public static <T> LinkedListNode<T> createLinkedList(List<T> data) {
+		if (data.size() == 0) {
+			return null;
+		}
+		LinkedListNode<T> head = new LinkedListNode<T>();
+		LinkedListNode<T> p = head;
+		for (int i = 0; i < data.size(); ++i) {
+			p.next = new LinkedListNode<T>(data.get(i));
+			p = p.next;
+		}
+
+		return head.next;
 	}
 }

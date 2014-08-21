@@ -1,5 +1,6 @@
 package chapter2;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 import util.Utils;
@@ -38,7 +39,7 @@ public class Q1 {
 		if (head == null || head.next == null) {
 			return;
 		}
-		
+
 		LinkedListNode<Integer> node1 = head;
 		LinkedListNode<Integer> node2;
 		Integer data;
@@ -58,20 +59,8 @@ public class Q1 {
 	}
 
 	public static void main(String[] args) {
-		Integer one = new Integer(1);
-		Integer two = new Integer(2);
-		Integer three = new Integer(3);
-		LinkedListNode<Integer> head = new LinkedListNode<Integer>(one);
-		LinkedListNode<Integer> node1 = new LinkedListNode<Integer>(one);
-		LinkedListNode<Integer> node2 = new LinkedListNode<Integer>(two);
-		LinkedListNode<Integer> node3 = new LinkedListNode<Integer>(one);
-		LinkedListNode<Integer> node4 = new LinkedListNode<Integer>(three);
-		LinkedListNode<Integer> node5 = new LinkedListNode<Integer>(three);
-		head.next = node1;
-		node1.next = node2;
-		node2.next = node3;
-		node3.next = node4;
-		node4.next = node5;
+		LinkedListNode<Integer> head = Utils.createLinkedList(Arrays.asList(1,
+				1, 2, 1, 3, 3));
 
 		Utils.printLinkedList(head);
 
