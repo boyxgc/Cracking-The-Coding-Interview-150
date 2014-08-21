@@ -20,10 +20,18 @@ public class Q6 {
 		LinkedListNode<?> fast = head;
 
 		/* move with different speed until meeting with each other */
-		do {
+		while (fast != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
-		} while (slow != fast);
+			if (slow == fast) {
+				break;
+			}
+		}
+
+		/* no meeting point, no loop */
+		if (fast == null || fast.next == null) {
+			return null;
+		}
 
 		/*
 		 * slow pointer restarts from the head with speed of one move per time,
