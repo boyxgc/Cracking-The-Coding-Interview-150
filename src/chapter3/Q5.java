@@ -1,6 +1,5 @@
 package chapter3;
 
-import java.util.Queue;
 import java.util.Stack;
 
 /**
