@@ -49,6 +49,22 @@ public class Q6 {
 		}
 	}
 
+	/*
+	 * time complexity O(n^2)
+	 */
+	public static Stack<Integer> sortStack2(Stack<Integer> unsorted) {
+		Stack<Integer> sorted = new Stack<Integer>();
+		while (!unsorted.isEmpty()) {
+			int item = unsorted.pop();
+			while (!sorted.isEmpty() && sorted.peek() > item) {
+				unsorted.push(sorted.pop());
+			}
+			sorted.push(item);
+		}
+
+		return sorted;
+	}
+
 	public static void main(String[] args) {
 		Stack<Integer> stack = new Stack<Integer>();
 		stack.push(3);
@@ -63,5 +79,21 @@ public class Q6 {
 		while (!stack.isEmpty()) {
 			System.out.print(stack.pop() + " ");
 		}
+		System.out.println();
+
+		Stack<Integer> stack2 = new Stack<Integer>();
+		stack2.push(3);
+		stack2.push(2);
+		stack2.push(5);
+		stack2.push(1);
+		stack2.push(4);
+		stack2.push(2);
+
+		Stack<Integer> sorted = sortStack2(stack2);
+
+		while (!sorted.isEmpty()) {
+			System.out.print(sorted.pop() + " ");
+		}
+
 	}
 }
