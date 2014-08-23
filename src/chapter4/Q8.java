@@ -14,6 +14,10 @@ import dataStructure.TreeNode;
  */
 public class Q8 {
 
+	/*
+	 * Time complexity O(nm), n is number of nodes of tree1, m is number of
+	 * nodes of tree2
+	 */
 	public boolean containsTree(TreeNode<?> root, TreeNode<?> subTreeRoot) {
 		if (subTreeRoot == null) {
 			return true;
