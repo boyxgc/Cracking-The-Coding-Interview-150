@@ -3,6 +3,13 @@ package chapter4;
 import util.Utils;
 import dataStructure.BiTreeNode;
 
+/**
+ * Given a sorted array (in ascending order), create a binary search tree with
+ * minimal height
+ * 
+ * @author boyxgc
+ * 
+ */
 public class Q3 {
 
 	public static <T> BiTreeNode<T> createMinHeightBST(T[] data) {
@@ -33,7 +40,7 @@ public class Q3 {
 
 		Integer data[] = { 1, 2, 3, 4, 5, 6, 7 };
 		BiTreeNode<Integer> root = createMinHeightBST(data);
-		
+
 		Utils.printBiTreePreorder(root);
 	}
 }

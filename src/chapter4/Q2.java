@@ -2,6 +2,12 @@ package chapter4;
 
 import dataStructure.GraphNode;
 
+/**
+ * In a directed graph, find if there is any route between two nodes
+ * 
+ * @author boyxgc
+ * 
+ */
 public class Q2 {
 
 	public static <T> boolean isRoute(GraphNode<T> node1, GraphNode<T> node2) {
