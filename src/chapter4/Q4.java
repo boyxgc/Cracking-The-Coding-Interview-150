@@ -26,34 +26,27 @@ public class Q4 {
 		}
 		
 		Queue<TreeNode<?>> queue = new LinkedList<TreeNode<?>>();
-		Queue<Integer> nodeCountQueue = new LinkedList<Integer>();
-
 		queue.add(root);
-		nodeCountQueue.add(1);
 
 		while (!queue.isEmpty()) {
 
 			LinkedList<TreeNode<?>> list = new LinkedList<TreeNode<?>>();
-			int nodesTobePopped = nodeCountQueue.remove();
-			int nextNodesTobePopped = 0;
+			Queue<TreeNode<?>> nextQueue = new LinkedList<TreeNode<?>>();
 
-			while (nodesTobePopped > 0) {
+			while (!queue.isEmpty()) {
 				TreeNode<?> node = queue.remove();
 				list.add(node);
 
 				if (node.left != null) {
-					queue.add(node.left);
-					++nextNodesTobePopped;
+					nextQueue.add(node.left);
 				}
 				if (node.right != null) {
-					queue.add(node.right);
-					++nextNodesTobePopped;
+					nextQueue.add(node.right);
 				}
-				--nodesTobePopped;
 			}
 
 			lists.add(list);
-			nodeCountQueue.add(nextNodesTobePopped);
+			queue = nextQueue;
 		}
 
 		return lists;
