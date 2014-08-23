@@ -2,8 +2,8 @@ package util;
 
 import java.util.List;
 
-import dataStructure.BiTreeNode;
 import dataStructure.LinkedListNode;
+import dataStructure.TreeNode;
 
 public class Utils {
 	public static void printIntMatrix(int[][] matrix, int m, int n) {
@@ -37,7 +37,7 @@ public class Utils {
 		return head.next;
 	}
 
-	public static <T> void printBiTreePreorder(BiTreeNode<T> root) {
+	public static <T> void printBiTreePreorder(TreeNode<T> root) {
 		if (root != null) {
 			System.out.print(root.data + " ");
 			printBiTreePreorder(root.left);
