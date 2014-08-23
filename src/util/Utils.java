@@ -2,6 +2,7 @@ package util;
 
 import java.util.List;
 
+import dataStructure.BiTreeNode;
 import dataStructure.LinkedListNode;
 
 public class Utils {
@@ -34,5 +35,13 @@ public class Utils {
 		}
 
 		return head.next;
+	}
+
+	public static <T> void printBiTreePreorder(BiTreeNode<T> root) {
+		if (root != null) {
+			System.out.print(root.data + " ");
+			printBiTreePreorder(root.left);
+			printBiTreePreorder(root.right);
+		}
 	}
 }
