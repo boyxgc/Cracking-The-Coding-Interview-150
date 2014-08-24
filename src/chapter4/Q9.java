@@ -29,9 +29,6 @@ public class Q9 {
 		}
 	}
 
-	/*
-	 * time complexity O(n*log(n)) ? , n is number of nodes
-	 */
 	public static List<Path> findPaths(TreeNode<Integer> root, int sum) {
 		List<Path> paths = new ArrayList<Path>();
 
@@ -40,6 +37,11 @@ public class Q9 {
 		return paths;
 	}
 
+	/*
+	 * SOLUTION 1
+	 * 
+	 * time complexity O(n^2) , n is number of nodes
+	 */
 	private static void generatePaths(TreeNode<Integer> node, Path path,
 			int aimSum, List<Path> paths) {
 		if (node == null) {
@@ -53,12 +55,50 @@ public class Q9 {
 			paths.add(path);
 		}
 
+		/* extend current path */
 		generatePaths(node.left, new Path(path), aimSum, paths);
 		generatePaths(node.right, new Path(path), aimSum, paths);
 
-		/* start two new path */
+		/* start two new paths */
 		generatePaths(node.left, new Path(), aimSum, paths);
 		generatePaths(node.right, new Path(), aimSum, paths);
+	}
+
+	/*
+	 * SOLUTION 2
+	 * 
+	 * find the paths upwards from the current node that sum up to the value
+	 * 
+	 * pre-new a node array as path with its size be the depth of the tree
+	 * 
+	 * time complexity O(n*log(n))
+	 */
+	public static void generatePath(TreeNode<Integer> root, int sum,
+			TreeNode<Integer>[] path, int level) {
+		if (root == null) {
+			return;
+		}
+
+		path[level] = root;
+		int tmpSum = 0;
+		/* find paths ending with this node that sum up to the given value */
+		for (int i = level; i >= 0; --i) {
+			tmpSum += path[i].data;
+			if (tmpSum == sum) {
+				/*
+				 * print path[i...level] here
+				 */
+			}
+		}
+
+		generatePath(root.left, sum, path, level + 1);
+		generatePath(root.right, sum, path, level + 1);
+
+		/*
+		 * remove the node from the current path, not necessary here, but good
+		 * practice
+		 */
+		path[level] = null;
 	}
 
 	public static void main(String[] args) {
