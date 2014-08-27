@@ -20,7 +20,7 @@ public class Q2 {
 		protected String id;
 		protected String name;
 		protected boolean isAvailable;
-		private Call currentCall;
+		protected Call currentCall;
 
 		public Employee(String _id, String _name) {
 			id = _id;
