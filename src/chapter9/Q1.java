@@ -12,15 +12,15 @@ import java.util.Arrays;
  */
 public class Q1 {
 
-	/**
+	/*
 	 * recursive function :
 	 * 
 	 * S(n) = S(n-1) + S (n-2) + S(n-3), n > 2
 	 * 
 	 * S(n) = n; n < 2 && n >= 0
 	 * 
+	 * time O(n), space O(1)
 	 */
-
 	public static int countWays(int n) {
 		if (n == 0) {
 			return 1;
@@ -41,7 +41,7 @@ public class Q1 {
 		return s;
 	}
 
-	/* use recursion */
+	/* use recursion time O(n), space O(n) */
 	public static int countWays2(int n) {
 		int[] ways = new int[n + 1];
 		Arrays.fill(ways, -1);
