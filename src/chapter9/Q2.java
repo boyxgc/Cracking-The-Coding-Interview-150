@@ -1,5 +1,6 @@
 package chapter9;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -55,8 +56,9 @@ public class Q2 {
 		}
 
 		Hashtable<Point, Boolean> cache = new Hashtable<Point, Boolean>();
+		List<Point> path = new ArrayList<Point>();
 		return getPathWithOffpoints(endPoint.x, endPoint.y, new HashSet<Point>(
-				offPoints), cache);
+				offPoints), cache, path);
 	}
 
 	private static boolean getPathWithOffpoints(int x, int y,
