@@ -41,6 +41,12 @@ public class Q6 {
 		}
 	}
 
+	/**
+	 * Not very efficient
+	 * 
+	 * @param n
+	 * @return
+	 */
 	public static Set<String> printParentheses2(int n) {
 		Set<String> result = new HashSet<String>();
 
