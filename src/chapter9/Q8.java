@@ -1,7 +1,5 @@
 package chapter9;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Given a infinite number of quarters(25 cents), dimes(10 cents), nickels(5
