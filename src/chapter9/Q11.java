@@ -2,8 +2,6 @@ package chapter9;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Given a boolean expression consisting of the symbols 0, 1, &, |, and ^, and a
@@ -17,19 +15,19 @@ public class Q11 {
 
 	public static ArrayList<String> parenthExpr(String expr, boolean result) {
 
-		HashMap<String, Set<String>> cache = new HashMap<String, Set<String>>();
-		Set<String> ret = parenthExpr(expr, result, cache);
+		HashMap<String, ArrayList<String>> cache = new HashMap<String, ArrayList<String>>();
+		ArrayList<String> ret = parenthExpr(expr, result, cache);
 
 		return new ArrayList<String>(ret);
 	}
 
-	private static Set<String> parenthExpr(String expr, boolean result,
-			HashMap<String, Set<String>> cache) {
+	private static ArrayList<String> parenthExpr(String expr, boolean result,
+			HashMap<String, ArrayList<String>> cache) {
 		String key = expr + "=" + result;
 		if (cache.containsKey(key)) {
 			return cache.get(key);
 		}
-		Set<String> ret = new HashSet<String>();
+		ArrayList<String> ret = new ArrayList<String>();
 		if (expr.length() == 1) {
 			/* value is same as result */
 			if (((Integer.parseInt(expr)) ^ (result ? 1 : 0)) == 0) {
@@ -103,15 +101,15 @@ public class Q11 {
 		return ret;
 	}
 
-	private static Set<String> parenthSubExpr(String expr, int splitIndex,
-			boolean leftResult, boolean rightResult,
-			HashMap<String, Set<String>> cache) {
-		Set<String> leftSub = parenthExpr(expr.substring(0, splitIndex),
+	private static ArrayList<String> parenthSubExpr(String expr,
+			int splitIndex, boolean leftResult, boolean rightResult,
+			HashMap<String, ArrayList<String>> cache) {
+		ArrayList<String> leftSub = parenthExpr(expr.substring(0, splitIndex),
 				leftResult, cache);
-		Set<String> rightSub = parenthExpr(expr.substring(splitIndex + 1),
-				rightResult, cache);
+		ArrayList<String> rightSub = parenthExpr(
+				expr.substring(splitIndex + 1), rightResult, cache);
 
-		Set<String> ret = new HashSet<String>();
+		ArrayList<String> ret = new ArrayList<String>();
 		if (leftSub != null && leftSub.size() > 0 && rightSub != null
 				&& rightSub.size() > 0) {
 			for (String left : new ArrayList<String>(leftSub)) {
