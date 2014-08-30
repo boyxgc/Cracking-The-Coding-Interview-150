@@ -13,6 +13,84 @@ import java.util.HashMap;
  */
 public class Q11 {
 
+	public static int countParenthExpr(String expr, boolean result) {
+		HashMap<String, Integer> cache = new HashMap<String, Integer>();
+		return countParenthExpr(expr, result, 0, expr.length() - 1, cache);
+	}
+
+	private static int countParenthExpr(String expr, boolean result, int b,
+			int e, HashMap<String, Integer> cache) {
+		String key = "" + b + e + result;
+		if (cache.containsKey(key)) {
+			return cache.get(key);
+		}
+
+		int count = 0;
+		if (b == e) {
+			if (result && expr.charAt(b) == '1' || !result
+					&& expr.charAt(b) == '0') {
+				count = 1;
+			} else {
+				count = 0;
+			}
+			return count;
+		}
+		for (int i = b + 1; i < e; i += 2) {
+			char op = expr.charAt(i);
+			if (result) {
+				if (op == '&') {
+					/* 1 & 1 */
+					count += countParenthExpr(expr, true, b, i - 1, cache)
+							* countParenthExpr(expr, true, i + 1, e, cache);
+				} else if (op == '|') {
+					/* 1 | 0 */
+					count += countParenthExpr(expr, true, b, i - 1, cache)
+							* countParenthExpr(expr, false, i + 1, e, cache);
+					/* 0 | 1 */
+					count += countParenthExpr(expr, false, b, i - 1, cache)
+							* countParenthExpr(expr, true, i + 1, e, cache);
+					/* 1 | 1 */
+					count += countParenthExpr(expr, true, b, i - 1, cache)
+							* countParenthExpr(expr, true, i + 1, e, cache);
+				} else if (op == '^') {
+					/* 1 ^ 0 */
+					count += countParenthExpr(expr, true, b, i - 1, cache)
+							* countParenthExpr(expr, false, i + 1, e, cache);
+					/* 0 ^ 1 */
+					count += countParenthExpr(expr, false, b, i - 1, cache)
+							* countParenthExpr(expr, true, i + 1, e, cache);
+				}
+			} else {
+				if (op == '&') {
+					/* 1 & 0 */
+					count += countParenthExpr(expr, true, b, i - 1, cache)
+							* countParenthExpr(expr, false, i + 1, e, cache);
+					/* 0 & 1 */
+					count += countParenthExpr(expr, false, b, i - 1, cache)
+							* countParenthExpr(expr, true, i + 1, e, cache);
+					/* 0 & 0 */
+					count += countParenthExpr(expr, false, b, i - 1, cache)
+							* countParenthExpr(expr, false, i + 1, e, cache);
+				} else if (op == '|') {
+					/* 0 | 0 */
+					count += countParenthExpr(expr, false, b, i - 1, cache)
+							* countParenthExpr(expr, false, i + 1, e, cache);
+				} else if (op == '^') {
+					/* 1 ^ 1 */
+					count += countParenthExpr(expr, true, b, i - 1, cache)
+							* countParenthExpr(expr, true, i + 1, e, cache);
+					/* 0 ^ 0 */
+					count += countParenthExpr(expr, false, b, i - 1, cache)
+							* countParenthExpr(expr, false, i + 1, e, cache);
+				}
+			}
+		}
+
+		cache.put(key, count);
+
+		return count;
+	}
+
 	public static ArrayList<String> parenthExpr(String expr, boolean result) {
 
 		HashMap<String, ArrayList<String>> cache = new HashMap<String, ArrayList<String>>();
@@ -130,6 +208,8 @@ public class Q11 {
 
 	public static void main(String[] args) {
 		String expr = "1&0|1&1";
+
+		System.out.println(countParenthExpr(expr, true));
 
 		ArrayList<String> ret = parenthExpr(expr, true);
 		for (String str : ret) {
