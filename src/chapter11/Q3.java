@@ -43,9 +43,58 @@ public class Q3 {
 
 	}
 
+	public static int findNumInRotatedArrayWithDups(int[] array, int num) {
+		return findNumInRotatedArrayWithDups(array, num, 0, array.length - 1);
+	}
+
+	private static int findNumInRotatedArrayWithDups(int[] array, int num,
+			int low, int high) {
+
+		if (low > high) {
+			return -1;
+		}
+
+		int mid = (low + high) / 2;
+
+		if (array[mid] == num) {
+			return mid;
+		}
+
+		if (array[low] < array[mid]) { // left is rightly ordered
+			if (array[low] <= num && num <= array[mid]) {
+				return findNumInRotatedArrayWithDups(array, num, low, mid - 1);
+			} else {
+				return findNumInRotatedArrayWithDups(array, num, mid + 1, high);
+			}
+		} else if (array[low] > array[mid]) {// right is rightly ordered
+			if (array[mid] <= num && num <= array[high]) {
+				return findNumInRotatedArrayWithDups(array, num, mid + 1, high);
+			} else {
+				return findNumInRotatedArrayWithDups(array, num, low, mid - 1);
+			}
+		} else {
+			if (array[mid] != array[high]) { // left are all same as array[mid]
+				return findNumInRotatedArrayWithDups(array, num, mid + 1, high);
+			} else {
+				int left = findNumInRotatedArrayWithDups(array, num, low,
+						mid - 1);
+				if (left != -1) {
+					return left;
+				} else {
+					return findNumInRotatedArrayWithDups(array, num, mid + 1,
+							high);
+				}
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		int array[] = { 3, 4, 5, 8, 9, 0, 1, 2 };
 
 		System.out.println(findNumInRotatedArray(array, 0));
+
+		int array_dups[] = { 3, 3, 3, 3, 3, 0, 1, 2, 3 };
+
+		System.out.println(findNumInRotatedArrayWithDups(array_dups, 0));
 	}
 }
