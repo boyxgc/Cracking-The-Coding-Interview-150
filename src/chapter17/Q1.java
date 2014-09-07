@@ -15,9 +15,9 @@ public class Q1 {
 
 		System.out.println(x + "," + y);
 
-		x = x + y; // 3 + 5
-		y = x - y; // 8 - 3
-		x = x - y; // 8 - 5
+		x = x ^ y; 
+		y = x ^ y; 
+		x = x ^ y; 
 
 		System.out.println(x + "," + y);
 	}
