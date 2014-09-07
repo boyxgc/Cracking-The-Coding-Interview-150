@@ -1,6 +1,5 @@
 package chapter17;
 
-
 /**
  * Given an array of integers, write a method to find indices m and n such that
  * if you sorted elements m through n, the entire array would be sorted.
@@ -47,43 +46,42 @@ public class Q6 {
 		int min = array[m];
 		int max = array[n];
 
-		for (int i = m + 1; i < n; ++i) {
-			if (array[i] < min) {
-				min = array[i];
-			}
+		for (int i = 0; i <= n; ++i) {
 			if (array[i] > max) {
 				max = array[i];
 			}
 		}
 
-		while (array[m] > min || array[n] < max) {
-			while (min < array[m] && m > 0) {
-				if (array[m] < min) {
-					min = array[m];
-				}
-				if (array[m] > max) {
-					max = array[m];
-				}
-				m--;
-			}
-
-			while (max > array[n] && n < array.length - 1) {
-				if (array[n] < min) {
-					min = array[n];
-				}
-				if (array[n] > max) {
-					max = array[n];
-				}
-				n++;
+		for (int i = m; i < array.length; ++i) {
+			if (array[i] < min) {
+				min = array[i];
 			}
 		}
 
-		return new Result(m + 1, n - 1);
+		System.out.println(min + "," + max);
+
+		while (min < array[m] && m > 0) {
+			m--;
+		}
+
+		while (max > array[n] && n < array.length - 1) {
+			n++;
+		}
+
+		if (array[m] <= min) {
+			m++;
+		}
+
+		if (array[n] >= max) {
+			n--;
+		}
+
+		return new Result(m, n);
 	}
 
 	public static void main(String[] args) {
 
-		int[] array = { 1, 2, 4, 7, 10, 11, 7, 12, 2, 6, 7, 16, 18, 19 };
+		int[] array = { 1, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19 };
 
 		System.out.println(findIndices(array).toString());
 	}
