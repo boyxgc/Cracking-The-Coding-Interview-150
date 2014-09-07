@@ -62,6 +62,48 @@ public class Q13 {
 		}
 	}
 
+	/**
+	 * Build a circular, runtime O(n)
+	 * 
+	 * @return
+	 */
+	public static BiNode convert2(BiNode root) {
+		if (root == null) {
+			return null;
+		}
+
+		BiNode left = convert2(root.node1);
+		BiNode right = convert2(root.node2);
+
+		if (left == null && right == null) {
+			root.node1 = root;
+			return root;
+		} else if (left == null) {
+			root.node2 = right;
+			root.node1 = right.node1;
+			right.node1 = root;
+			return root;
+		} else if (right == null) {
+			BiNode leftTail = left.node1;
+			leftTail.node2 = root;
+			root.node1 = leftTail;
+			left.node1 = root;
+			return left;
+		} else {
+			BiNode leftTail = left.node1;
+			leftTail.node2 = root;
+			root.node1 = leftTail;
+
+			root.node2 = right;
+
+			left.node1 = right.node1;// !!!!!
+
+			right.node1 = root;
+
+			return left;
+		}
+	}
+
 	public static void main(String[] args) {
 		BiNode n1 = new BiNode(1);
 		BiNode n2 = new BiNode(2);
@@ -80,7 +122,7 @@ public class Q13 {
 		n6.node2 = n8;
 		n8.node1 = n7;
 
-		BiNode listhead = convert(n6);
+		BiNode listhead = convert2(n6);
 
 		BiNode tmp = listhead;
 		while (tmp != null) {
