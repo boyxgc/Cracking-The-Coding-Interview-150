@@ -43,22 +43,24 @@ public class Q6 {
 			n--;
 		}
 
-		int min = array[m];
-		int max = array[n];
+		if (n == m) {
+			return new Result(0, 0);
+		}
 
-		for (int i = 0; i <= n; ++i) {
+		/* 0 ~ m is sorted */
+		/* n ~ is sorted */
+
+		int min = Math.min(array[m], array[n]);
+		int max = Math.max(array[m], array[n]);
+
+		for (int i = m + 1; i < n; ++i) {
 			if (array[i] > max) {
 				max = array[i];
 			}
-		}
-
-		for (int i = m; i < array.length; ++i) {
 			if (array[i] < min) {
 				min = array[i];
 			}
 		}
-
-		System.out.println(min + "," + max);
 
 		while (min < array[m] && m > 0) {
 			m--;
