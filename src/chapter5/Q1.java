@@ -19,7 +19,7 @@ public class Q1 {
 
 	public static int insert(int N, int M, int i, int j) {
 		/* mask to clear bits between ith and jth */
-		int mask = ~(-1 >>> (31 - j)) | (-1 >>> (32 - i));
+		int mask = ~(-1 >>> (31 - j)) ^ (-1 >>> (32 - i));
 
 		return (N & mask) | (M << i);
 	}
