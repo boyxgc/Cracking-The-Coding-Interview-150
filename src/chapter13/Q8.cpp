@@ -33,7 +33,24 @@ class SmartPointer {
         ++(*ref_count);
     }
 
+    SmartPointer<T> & operator=(SmartPointer<T> & sptr) {
+        if(this == &sptr) return *this;
+
+        if(ref_count && *ref_count > 0) {
+            remove();
+        }
+
+        ref = sptr.ref;
+        ref_count = sptr.ref_count;
+        ++(*ref_count);
+        return *this;
+    }
+
     ~SmartPointer() {
+        remove();
+    }
+  protected:
+    void remove() {
         --(*ref_count);
         if(*ref_count == 0) {
             delete ref;
