@@ -15,7 +15,7 @@ public class Q6 {
 	public static int[] findSmallestMillion(int[] nums, int left, int right,
 			int rank) {
 
-		int div = partition(nums, 0, right);
+		int div = partition(nums, left, right);
 		int size = div - left + 1;
 		if (size == rank + 1) {
 			int[] ret = new int[1000000];
